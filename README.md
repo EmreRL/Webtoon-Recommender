@@ -84,6 +84,10 @@ A regression-based function `f(k)` was learned to estimate expected likes per ep
 - Intercept (α): `12.8175`
 - Decay coefficient (β): `0.2867`
 - R² score: `0.1692`
+- 
+<img width="1189" height="590" alt="download" src="https://github.com/user-attachments/assets/4b62c443-f494-4360-be78-1c4c6b72c84d" />
+
+<img width="1389" height="490" alt="download (1)" src="https://github.com/user-attachments/assets/d65d0c98-c7b5-417c-912a-ce7c7df60020" />
 
 This allowed me to:
 
