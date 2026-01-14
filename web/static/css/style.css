@@ -1,0 +1,843 @@
+/**
+ * Webtoon RAG Recommendation System - Enhanced Styles
+ * With popularity-based gradient borders and cover images
+ */
+
+/* ============================================================
+   CSS VARIABLES & RESET
+   ============================================================ */
+:root {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #818cf8;
+    
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    
+    --border-color: #334155;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Popularity border colors */
+    --border-hit-start: #ef4444;
+    --border-hit-end: #1a1a1a;
+    --border-verypopular-start: #3b82f6;
+    --border-verypopular-end: #8b5cf6;
+    --border-popular-start: #f59e0b;
+    --border-popular-end: #fb923c;
+    --border-lesspopular: #10b981;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1f35 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ============================================================
+   APP CONTAINER
+   ============================================================ */
+.app-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.app-header {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-color);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-icon {
+    font-size: 3rem;
+    filter: drop-shadow(0 4px 6px rgba(99, 102, 241, 0.3));
+}
+
+.app-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.app-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.tech-badge {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-light);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* ============================================================
+   SEARCH SECTION
+   ============================================================ */
+.search-section {
+    margin-bottom: 3rem;
+}
+
+.search-container {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+.search-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.search-description {
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.search-input-wrapper {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    flex: 1;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.5rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.search-button {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+.search-button:active {
+    transform: translateY(0);
+}
+
+.button-icon {
+    font-size: 1.25rem;
+}
+
+/* Example Queries */
+.example-queries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-label {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.example-chip {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.example-chip:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   RESULTS SECTION
+   ============================================================ */
+.results-section {
+    margin-bottom: 3rem;
+}
+
+.results-section.hidden {
+    display: none;
+}
+
+.results-container {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    min-height: 400px;
+}
+
+/* Loading State */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+.loading-state.hidden {
+    display: none;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid var(--bg-tertiary);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+}
+
+/* Error State */
+.error-state {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.error-state.hidden {
+    display: none;
+}
+
+.error-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.error-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.error-message {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.retry-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.retry-button:hover {
+    background: var(--primary-dark);
+}
+
+/* Success State */
+.success-state.hidden {
+    display: none;
+}
+
+.results-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.results-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.results-icon {
+    font-size: 1.75rem;
+}
+
+.query-highlight {
+    color: var(--primary-light);
+    font-weight: 700;
+}
+
+.results-meta {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.meta-badge {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* No Results Card */
+.no-results-card {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.no-results-card.hidden {
+    display: none;
+}
+
+.no-results-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.no-results-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.no-results-text {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.available-label {
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.genre-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.genre-chip {
+    background: var(--bg-tertiary);
+    color: var(--primary-light);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* ============================================================
+   RECOMMENDATIONS GRID
+   ============================================================ */
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.webtoon-card {
+    position: relative;
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+    animation: fadeInUp 0.5s ease-out backwards;
+    border: 2px solid var(--border-color);
+    min-height: 450px;
+}
+
+/* Hit - Red to Black gradient border with glow */
+.webtoon-card[data-popularity="Hit"] {
+    border-image: linear-gradient(135deg, var(--border-hit-start) 0%, var(--border-hit-end) 100%) 1;
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 
+        0 -2px 20px rgba(239, 68, 68, 0.5),
+        -2px 0 20px rgba(239, 68, 68, 0.5),
+        2px 0 20px rgba(239, 68, 68, 0.5);
+}
+
+/* VeryPopular - Yellow to Orange gradient border with glow */
+.webtoon-card[data-popularity="VeryPopular"] {
+    border-image: linear-gradient(135deg, var(--border-popular-start) 0%, var(--border-popular-end) 100%) 1;
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 
+        0 -2px 20px rgba(245, 158, 11, 0.5),
+        -2px 0 20px rgba(245, 158, 11, 0.5),
+        2px 0 20px rgba(245, 158, 11, 0.5);
+}
+
+/* Popular - Blue to Purple gradient border with glow */
+.webtoon-card[data-popularity="Popular"] {
+    border-image: linear-gradient(135deg, var(--border-verypopular-start) 0%, var(--border-verypopular-end) 100%) 1;
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 
+        0 -2px 20px rgba(99, 102, 241, 0.5),
+        -2px 0 20px rgba(99, 102, 241, 0.5),
+        2px 0 20px rgba(99, 102, 241, 0.5);
+}
+
+/* LessPopular - Green border with glow */
+.webtoon-card[data-popularity="LessPopular"] {
+    border-top: 2px solid var(--border-lesspopular);
+    border-left: 2px solid var(--border-lesspopular);
+    border-right: 2px solid var(--border-lesspopular);
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 
+        0 -2px 15px rgba(16, 185, 129, 0.4),
+        -2px 0 15px rgba(16, 185, 129, 0.4),
+        2px 0 15px rgba(16, 185, 129, 0.4);
+}
+
+/* Unpopular - No special border (default) */
+.webtoon-card[data-popularity="Unpopular"] {
+    border: 2px solid var(--border-color);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.webtoon-card:hover {
+    transform: translateY(-4px);
+}
+
+.webtoon-card-inner {
+    position: relative;
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+/* Card Cover Image - Now on the right side */
+.card-cover {
+    width: 400px;
+    min-width: 400px;
+    height: 100%;
+    min-height: 450px;
+    position: relative;
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    flex-shrink: 0;
+    order: 2;
+}
+
+.card-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.webtoon-card:hover .card-cover-image {
+    transform: scale(1.05);
+}
+
+.card-cover-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    opacity: 0.3;
+}
+
+/* Card Content - On the left side */
+.card-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    order: 1;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-rank {
+    background: var(--primary-color);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.card-similarity {
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.similarity-bar {
+    background: var(--bg-secondary);
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.25rem;
+}
+
+.similarity-fill {
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--success-color) 100%);
+    height: 100%;
+    transition: width 0.5s ease-out;
+}
+
+.similarity-text {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.badge-genre {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-light);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.badge-popularity {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badge-quality {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.card-description {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.card-recommendation {
+    background: rgba(99, 102, 241, 0.05);
+    border-left: 3px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    margin-top: 1rem;
+}
+
+.recommendation-label {
+    color: var(--primary-light);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.recommendation-text {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* ============================================================
+   STATS SECTION
+   ============================================================ */
+.stats-section {
+    margin-bottom: 2rem;
+}
+
+.stats-container {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+.stats-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.stats-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.genres-list {
+    margin-top: 1.5rem;
+}
+
+.genres-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.genre-tag {
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    border: 1px solid var(--border-color);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.app-footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.footer-tech {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+@media (max-width: 1400px) {
+    .app-container {
+        padding: 2rem 2rem;
+    }
+    
+    .recommendations-grid {
+        gap: 2rem;
+    }
+    
+    .card-cover {
+        width: 360px;
+        min-width: 360px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .app-container {
+        padding: 2rem 1.5rem;
+    }
+    
+    .recommendations-grid {
+        gap: 1.5rem;
+    }
+    
+    .card-cover {
+        width: 320px;
+        min-width: 320px;
+    }
+    
+    .card-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .app-header {
+        padding: 1.5rem;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo-section {
+        flex-direction: column;
+    }
+    
+    .app-title {
+        font-size: 1.5rem;
+    }
+    
+    .search-container {
+        padding: 1.5rem;
+    }
+    
+    .search-input-wrapper {
+        flex-direction: column;
+    }
+    
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stats-content {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Stack image on top for mobile */
+    .webtoon-card-inner {
+        flex-direction: column;
+    }
+    
+    .card-cover {
+        width: 100%;
+        height: 250px;
+        min-height: 250px;
+        order: 0;
+    }
+    
+    .card-content {
+        order: 1;
+        padding: 1.5rem;
+    }
+}

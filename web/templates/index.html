@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Header -->
+<header class="app-header">
+    <div class="header-content">
+        <div class="logo-section">
+            <span class="logo-icon">🎨</span>
+            <div>
+                <h1 class="app-title">Webtoon RAG Recommender</h1>
+                <p class="app-subtitle">AI-Powered Recommendations</p>
+            </div>
+        </div>
+        <div class="tech-badge">
+            <span class="badge">MiniLM-L6-v2</span>
+            <span class="badge">Gemini 2.0</span>
+            <span class="badge">Supabase</span>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <h2 class="search-title">What kind of webtoon are you looking for?</h2>
+            <p class="search-description">
+                Describe your preferences, mention genres, themes, or story elements you enjoy
+            </p>
+            
+            <div class="search-input-wrapper">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder='Try: "action with strong female lead" or "funny romance"'
+                    autocomplete="off"
+                >
+                <button id="searchButton" class="search-button">
+                    <span class="button-text">Get Recommendations</span>
+                    <span class="button-icon">→</span>
+                </button>
+            </div>
+            
+            <!-- Example Queries -->
+            <div class="example-queries">
+                <span class="example-label">Examples:</span>
+                <button class="example-chip" data-query="action webtoon with strong female lead">Action + Female Lead</button>
+                <button class="example-chip" data-query="revenge story with plot twists">Revenge Story</button>
+                <button class="example-chip" data-query="school life with comedy">School Life</button>
+                <button class="example-chip" data-query="something interesting">Surprise Me!</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultsSection" class="results-section hidden">
+        <div class="results-container">
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Finding perfect webtoons for you...</p>
+            </div>
+            
+            <!-- Error State -->
+            <div id="errorState" class="error-state hidden">
+                <div class="error-icon">⚠️</div>
+                <h3 class="error-title">Oops! Something went wrong</h3>
+                <p id="errorMessage" class="error-message"></p>
+                <button id="retryButton" class="retry-button">Try Again</button>
+            </div>
+            
+            <!-- Success State -->
+            <div id="successState" class="success-state hidden">
+                <div class="results-header">
+                    <h2 class="results-title">
+                        <span class="results-icon">✨</span>
+                        Recommendations for: <span id="queryDisplay" class="query-highlight"></span>
+                    </h2>
+                    <div class="results-meta">
+                        <span id="resultCount" class="meta-badge"></span>
+                        <span id="queryType" class="meta-badge"></span>
+                    </div>
+                </div>
+                
+                <!-- No Results Message -->
+                <div id="noResultsMessage" class="no-results-card hidden">
+                    <div class="no-results-icon">🔍</div>
+                    <h3 class="no-results-title">No exact matches found</h3>
+                    <p id="rejectionMessage" class="no-results-text"></p>
+                    <div id="availableGenres" class="available-genres"></div>
+                </div>
+                
+                <!-- Recommendations Grid -->
+                <div id="recommendationsGrid" class="recommendations-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Database Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <h3 class="stats-title">📊 Database Overview</h3>
+            <div id="statsContent" class="stats-content">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalWebtoons">-</div>
+                    <div class="stat-label">Total Webtoons</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="genreCount">-</div>
+                    <div class="stat-label">Genres</div>
+                </div>
+            </div>
+            <div id="genresList" class="genres-list"></div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="app-footer">
+    <p>Powered by RAG (Retrieval-Augmented Generation) Technology</p>
+    <p class="footer-tech">Sentence Transformers · Gemini AI · Supabase Vector DB</p>
+</footer>
+{% endblock %}

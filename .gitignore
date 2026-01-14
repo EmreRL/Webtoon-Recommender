@@ -1,0 +1,73 @@
+# ================================
+# Python
+# ================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.env/
+.env.local
+.env.*
+
+# ================================
+# Environment & Secrets
+# ================================
+.env
+.env.*
+*.key
+*.pem
+
+# ================================
+# OS / Editor
+# ================================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# ================================
+# Logs & runtime files
+# ================================
+*.log
+logs/
+
+# ================================
+# Data & artifacts (private)
+# ================================
+data/
+datasets/
+embeddings/
+*.csv
+*.parquet
+*.sqlite
+
+# ================================
+# Jupyter
+# ================================
+.ipynb_checkpoints/
+
+# ================================
+# Model caches
+# ================================
+.cache/
+models/
+
+# ================================
+# Web build artifacts
+# ================================
+web/static/build/
+
+# ================================
+# Allow templates
+# ================================
+!.env.template
