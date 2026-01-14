@@ -10,7 +10,10 @@ It is designed as a **portfolio-grade system** that demonstrates not only RAG an
 
 <img width="1766" height="846" alt="Ekran görüntüsü 2026-01-14 143150" src="https://github.com/user-attachments/assets/b9e3dcbd-6c35-4284-9c21-26979374c747" />
 
+<img width="1765" height="845" alt="Ekran görüntüsü 2026-01-14 150342" src="https://github.com/user-attachments/assets/b65c23a6-c4cc-489a-8687-1e9073e0ac1f" />
+
 ---
+
 
 ## What This Project Demonstrates
 
