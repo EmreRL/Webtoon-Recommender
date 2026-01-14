@@ -71,6 +71,8 @@ The final dataset includes the following columns:
 - `cover_url`
 - `created_at`
 
+<img width="1570" height="771" alt="Ekran görüntüsü 2026-01-14 150955" src="https://github.com/user-attachments/assets/95093d64-e71c-4342-952e-3540c336214e" />
+
 ---
 
 ## Feature Engineering: Popularity Modeling
