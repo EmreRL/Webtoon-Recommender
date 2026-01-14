@@ -6,7 +6,9 @@ This project is an **end-to-end recommendation system** built on top of a Retrie
 
 It is designed as a **portfolio-grade system** that demonstrates not only RAG and LLM usage, but also **data collection, data cleaning, feature engineering, vector search, and system-level design**.
 
-Unlike many RAG projects that rely on pre-packaged datasets, **the data used here was collected, cleaned, and enriched manually** as part of the project.
+**The data used here was collected, cleaned, and enriched manually** as part of the project.
+
+<img width="1766" height="846" alt="Ekran görüntüsü 2026-01-14 143150" src="https://github.com/user-attachments/assets/b9e3dcbd-6c35-4284-9c21-26979374c747" />
 
 ---
 
@@ -182,6 +184,7 @@ At a medium level of abstraction, the pipeline works as follows:
 
 Design decisions intentionally emphasize:
 
+
 - Precision over verbosity
 - Explicit rejection when confidence is low
 - Metadata-aware reasoning
@@ -201,8 +204,6 @@ The system requires:
 - API credentials owned by the user
 
 If you import your own suitable data and provide the required credentials, **the system is designed to work without architectural changes**.
-
-This approach reflects real-world constraints around data ownership and security.
 
 ---
 
